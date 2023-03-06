@@ -4,6 +4,7 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const ejs = require("ejs");
 const mongoose = require("mongoose");
+const {MongoClient} = require('mongodb');
 
 const session = require('express-session');
 const passport = require('passport')
@@ -14,7 +15,7 @@ const swaggerUi = require("swagger-ui-express")
 
 const app = express();
 
-
+const client = new MongoClient(process.env.MONGO);
 
 
 app.use(express.static("public"));
@@ -166,6 +167,9 @@ app.post("/login",function(req,res){
     })
 })
 
-app.listen(process.env.port||3500,function(){
-    console.log("Started at port");;
+client.connect(err=>{
+    if(err){console.log(err); return false;}
+    app.listen(process.env.PORT||3000,()=>{
+        console.log("Server Running")
+    })
 })
