@@ -15,7 +15,7 @@ const swaggerUi = require("swagger-ui-express")
 
 const app = express();
 
-const client = new MongoClient(process.env.MONGO);
+const client = new MongoClient(process.env.MONGOCOMMAND);
 
 
 app.use(express.static("public"));
