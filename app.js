@@ -25,11 +25,9 @@ try{
 }catch{
     console.log("Mongodb Connection error")
 }
-app.set('view engine','ejs');
 
-app.use(express.static(__dirname +"/public/css"));
-app.use(express.static(__dirname +"/views"));
-app.use(express.static(__dirname +"/views/partials"));
+app.set('view engine','ejs');
+app.use(express.static("public"));
 app.use(bodyParser.urlencoded({
     extended:true
 }))
