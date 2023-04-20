@@ -18,7 +18,6 @@ console.log("PRocess started checking ....")
 console.log(process.env.MONGOCOMMAND)
 const client = new MongoClient(process.env.MONGOCOMMAND,{
     useNewUrlParser: true,
-    useCreateIndex: true,
     useUnifiedTopology: true
 })
 .then(() => {
