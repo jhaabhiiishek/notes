@@ -130,8 +130,7 @@ app.get("/secrets",async function(req,res){
     if(req.isAuthenticated()){
         // Fetch data for user, and display
         var prevNotes = await Notesmodel.find({user:usertrack}).exec();
-        console.log(prevNotes)
-        if(prevNotes.length!=0){res.render("secrets",{results:prevNotes})}
+        res.render("secrets",{results:prevNotes})
     }else{
         passport.authenticate("local")(req,res, function(){
             res.redirect("/register");
