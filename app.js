@@ -15,8 +15,17 @@ const swaggerUi = require("swagger-ui-express")
 
 const app = express();
 
-const client = new MongoClient(process.env.MONGOCOMMAND);
-
+const client = new MongoClient(process.env.MONGOCOMMAND,{
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true
+})
+.then(() => {
+    console.log('Connected to Mongo!');
+})
+.catch((err) => {
+    console.error('Error connecting to Mongo', err);
+})
 
 app.use(express.static("public"));
 app.set('view engine','ejs');
