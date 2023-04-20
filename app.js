@@ -20,12 +20,6 @@ const client = new MongoClient(process.env.MONGOCOMMAND,{
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
-.then(() => {
-    console.log('Connected to Mongo!');
-})
-.catch((err) => {
-    console.error('Error connecting to Mongo', err);
-})
 
 app.use(express.static("public"));
 app.set('view engine','ejs');
