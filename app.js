@@ -16,8 +16,9 @@ const swaggerUi = require("swagger-ui-express")
 const app = express();
 console.log("PRocess started checking ....")
 console.log(process.env.MONGOCOMMAND)
+let client
 try{
-    const client = new MongoClient(process.env.MONGOCOMMAND,{
+    client = new MongoClient(process.env.MONGOCOMMAND,{
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
