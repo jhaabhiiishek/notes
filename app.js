@@ -59,7 +59,7 @@ const options={
 const swaggerSpec = swaggerJSDoc(options)
 app.use('/docs',swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
-mongoose.connect(process.env.MONGO,{useNewUrlParser:true})
+mongoose.connect(process.env.MONGOCOMMAND,{useNewUrlParser:true})
 
 const userSchema = new mongoose.Schema ({
     email: String,
