@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const {MongoClient} = require('mongodb');
 
 const session = require('express-session');
+const cookie_session = require('cookie-session');
 const passport = require('passport')
 const passportLocalMongoose = require('passport-local-mongoose')
 
@@ -24,7 +25,7 @@ app.use(bodyParser.urlencoded({
     extended:true
 }))
 
-app.use(session({
+app.use(cookie_session({
     secret:process.env.SECRET,
     resave:false,
     saveUninitialized:false
@@ -32,7 +33,7 @@ app.use(session({
 
 var usertrack ="";
 app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.cookie_session());
 
 const options={
     definition:{
